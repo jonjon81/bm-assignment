@@ -46,7 +46,7 @@ body {
 }
 
 .slider .arrow:hover {
-    background: blue;
+    background: blue !important;
     -webkit-transition:background .3s;
     -o-transition:background .3s;
     transition:background .3s;
@@ -81,7 +81,7 @@ body {
 }
 
 .slider #previous-arrow-off:hover {
-     background: grey;
+     background: grey !important;
 }
 
 .slider #next-arrow-on {
