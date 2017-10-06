@@ -66,6 +66,10 @@ body {
     transform: translateY(-50%);
 }
 
+.slider #previous-arrow-on:hover {
+    background: blue !important;
+  }
+
 .slider #previous-arrow-off {
      background: grey;
      padding: 11px;
@@ -181,8 +185,8 @@ body {
 /* Article Section */
 
 .articles ul {
-    margin-top: 50px;
-    min-height: 600px;
+    margin-top: 40px;
+    /*min-height: 600px;*/
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
@@ -195,8 +199,8 @@ body {
     display: inline-block;
     overflow: hidden;
     position: relative;
-    margin-top: 10px;
-    height: 400px;
+    margin-top: 20px;
+    height: 320px;
 }
 
 .articles li:hover .title {
@@ -206,7 +210,7 @@ body {
 .articles li img {
     position: absolute;
     width: 100%;
-    height: 65%;
+    /*height: 65%;*/
 }
 
 span.articleText {
@@ -230,18 +234,18 @@ span.txtDate {
 
 /* Media Queries */
 
-@media only screen
-  and (min-device-width: 320px)
-  and (max-device-width: 480px)
-  and (-webkit-min-device-pixel-ratio: 2) {
+@media only screen and (max-device-width: 480px){
+/*    .slider ul {
+      width: 100%;
+    }*/
     .slider ul li {
-        width: 100%;
-    }
 
-    .articles li {
-        width: 100%;
-        /*height: 300px;*/
     }
+/*
+    .articles li {
+        width: 100% !important;
+        height: 300px;
+    }*/
 
 }
 
@@ -252,6 +256,7 @@ span.txtDate {
 
     .articles li {
         width: 48%;
+        height: 300px;
     }
 
 }
