@@ -101,16 +101,19 @@ body {
     padding: 11px;
     color: #fff;
     font-size: 18px;
-    background: #f3c001;
-    z-index: 100;
+    background: grey;
+    z-index: 99;
     position: absolute;
     right: 0;
     border-radius: 9px 0 0 9px;
     top: 50%;
     transform: translateY(-50%);
-    display: none;
+    cursor: auto !important;
 }
 
+.slider #next-arrow-off:hover {
+  background: grey !important;
+}
 
 
 .slider li img {

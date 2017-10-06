@@ -85,15 +85,30 @@ Date.prototype.customFormat = function(formatString){
   $(document).ready(function() {
     var move = 0;
 
+
+/* next works with 0 -> -900 */
+
+
     $("#next-arrow-on").click(function () {
-      move -= 300;
-      $( "#previous-arrow-off").remove();
-      $(".slider ul").css("margin-left", move + "px");
+      console.log(move);
+      if (move > -900) {
+        move -= 300;
+        $( "#previous-arrow-off").css("z-index", 99);
+        $(".slider ul").css("margin-left", move + "px");
+      } else {
+        $("#next-arrow-off").css("z-index", 101);
+      }
     });
 
     $("#previous-arrow-on").click(function () {
-      move += 300;
-      $(".slider ul").css("margin-left", move + "px");
+            console.log(move);
+      if (move < 0) {
+        move += 300;
+        $("#next-arrow-off").css("z-index", 99);
+        $(".slider ul").css("margin-left", move + "px");
+      } else {
+        $( "#previous-arrow-off").css("z-index", 101);
+      }
     });
   })
 
