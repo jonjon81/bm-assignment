@@ -79,6 +79,23 @@ body {
     transform: translateY(-50%);
 }
 
+.slider .previous-arrow-off {
+     background: grey;
+     padding: 11px;
+     color: #fff;
+     font-size: 18px;
+     z-index: 100;
+     position: absolute;
+     left: 0;
+     border-radius: 0 9px 9px 0;
+     top: 50%;
+     transform: translateY(-50%);
+}
+
+.slider .previous-arrow-off:hover {
+     background: grey;
+}
+
 
 .slider li img {
     max-width:100%;
