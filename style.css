@@ -53,11 +53,11 @@ body {
     cursor: pointer;
 }
 
-.slider .previous-arrow {
+.slider #previous-arrow-on {
     padding: 11px;
     color: #fff;
     font-size: 18px;
-    background: #f3c001;
+    background: #f3c001 !important;
     z-index: 100;
     position: absolute;
     left: 0;
@@ -66,7 +66,25 @@ body {
     transform: translateY(-50%);
 }
 
-.slider .next-arrow {
+.slider #previous-arrow-off {
+     background: grey;
+     padding: 11px;
+     color: #fff;
+     font-size: 18px;
+     z-index: 101;
+     position: absolute;
+     left: 0;
+     border-radius: 0 9px 9px 0;
+     top: 50%;
+     transform: translateY(-50%);
+     cursor: auto !important;
+}
+
+.slider #previous-arrow-off:hover {
+     background: grey;
+}
+
+.slider #next-arrow-on {
     padding: 11px;
     color: #fff;
     font-size: 18px;
@@ -79,23 +97,20 @@ body {
     transform: translateY(-50%);
 }
 
-.slider .previous-arrow-off {
-     background: grey;
-     padding: 11px;
-     color: #fff;
-     font-size: 18px;
-     z-index: 100;
-     position: absolute;
-     left: 0;
-     border-radius: 0 9px 9px 0;
-     top: 50%;
-     transform: translateY(-50%);
-     cursor: auto !important;
+.slider #next-arrow-off {
+    padding: 11px;
+    color: #fff;
+    font-size: 18px;
+    background: #f3c001;
+    z-index: 100;
+    position: absolute;
+    right: 0;
+    border-radius: 9px 0 0 9px;
+    top: 50%;
+    transform: translateY(-50%);
+    display: none;
 }
 
-.slider .previous-arrow-off:hover {
-     background: grey;
-}
 
 
 .slider li img {

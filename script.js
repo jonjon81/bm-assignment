@@ -85,17 +85,14 @@ Date.prototype.customFormat = function(formatString){
   $(document).ready(function() {
     var move = 0;
 
-    $(".next-arrow").click(function () {
+    $("#next-arrow-on").click(function () {
       move -= 300;
-      console.log(move);
-      $( "#previous-arrow" ).removeClass( "previous-arrow-off" )
-      $( "#previous-arrow" ).addClass( "previous-arrow" )
+      $( "#previous-arrow-off").remove();
       $(".slider ul").css("margin-left", move + "px");
     });
 
-    $("#previous-arrow").click(function () {
+    $("#previous-arrow-on").click(function () {
       move += 300;
-      console.log("previous hit");
       $(".slider ul").css("margin-left", move + "px");
     });
   })
