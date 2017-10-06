@@ -90,6 +90,7 @@ body {
      border-radius: 0 9px 9px 0;
      top: 50%;
      transform: translateY(-50%);
+     cursor: auto !important;
 }
 
 .slider .previous-arrow-off:hover {

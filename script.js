@@ -84,12 +84,18 @@ Date.prototype.customFormat = function(formatString){
 
   $(document).ready(function() {
     var move = 0;
+
     $(".next-arrow").click(function () {
-      move -= 250;
+      move -= 300;
+      console.log(move);
+      $( "#previous-arrow" ).removeClass( "previous-arrow-off" )
+      $( "#previous-arrow" ).addClass( "previous-arrow" )
       $(".slider ul").css("margin-left", move + "px");
     });
-    $(".previous-arrow").click(function () {
-      move += 250;
+
+    $("#previous-arrow").click(function () {
+      move += 300;
+      console.log("previous hit");
       $(".slider ul").css("margin-left", move + "px");
     });
   })
