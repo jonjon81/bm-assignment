@@ -75,7 +75,7 @@ Date.prototype.customFormat = function(formatString){
         var date = d.customFormat( "#MMMM# #DD#, #YYYY#")
 
         var url = element.Url;
-        $(".articles ul").append("<li><a target='_blank' href='" + url + "'</a>" + picture + "<span class='articleText'>" + "<span class='title'>" + title + "</span>" + "</br>" + "<span class='txtDate'>" + date + "</span>" + "</br>" + " "  + "</span></li>" );
+        $(".articles ul").append("<li class='col-md-4 col-sm-6 col-xs-12'><a target='_blank' href='" + url + "'</a>" + picture + "<span class='articleText'>" + "<span class='title'>" + title + "</span>" + "</br>" + "<span class='txtDate'>" + date + "</span>" + "</br>" + " "  + "</span></li>" );
       });
     });
 
@@ -85,9 +85,7 @@ Date.prototype.customFormat = function(formatString){
   $(document).ready(function() {
     var move = 0;
 
-
 /* next works with 0 -> -900 */
-
 
     $("#next-arrow-on").click(function () {
       console.log(move);
@@ -111,7 +109,5 @@ Date.prototype.customFormat = function(formatString){
       }
     });
   })
-
 });
-
 
