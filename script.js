@@ -85,8 +85,6 @@ Date.prototype.customFormat = function(formatString){
   $(document).ready(function() {
     var move = 0;
 
-/* next works with 0 -> -900 */
-
     $("#next-arrow-on").click(function () {
       console.log(move);
       if (move > -900) {

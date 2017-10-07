@@ -231,24 +231,3 @@ span.txtDate {
 
 
 
-/* Media Queries */
-
-@media (min-width: 320px) and (max-width: 480px) {
-  .col-xs-12 {
-      /*width: 100% !important;*/
-
-  }
-}
-
-@media (min-width: 481px) {
-  .col-sm-6 {
-      /*width: 49%;*/
-  }
-}
-
-@media (min-width: 992px) {
-  .col-md-4 {
-      /*width: 32%;*/
-  }
-}
-
