@@ -25,7 +25,6 @@ body {
 .slider ul {
     position: relative;
     padding: 0;
-    width: 400%;
     margin-top: 25px;
     -moz-transition:margin 1s;
     -ms-transition:margin 1s;
@@ -33,21 +32,25 @@ body {
     -o-transition:margin 1s;
     transition:margin 1s;
     white-space: nowrap;
-    overflow-x: auto;
-    overflow-y: hidden;
-    /*display: flex;*/
+    width: 100%;
+    list-style: none;
+    -ms-box-orient: horizontal;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -moz-flex;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-flex-wrap: nowrap;
+    flex-wrap: nowrap;
+    justify-content: space-between;
     }
 
 .slider ul li {
-  padding: 0;
-  margin: 0;
-  width: 300px;
-  overflow: hidden;
   position: relative;
-  display: inline-block;
-  border: none;
-  list-style: none;
-  float: left;
+  min-width: 25%;
+  overflow: hidden;
+  padding: 2px;
 }
 
 .slider .arrow:hover {
@@ -100,7 +103,7 @@ body {
     background: #f3c001;
     z-index: 100;
     position: absolute;
-    right: 0;
+    right: 0px;
     border-radius: 9px 0 0 9px;
     top: 50%;
     transform: translateY(-50%);
@@ -113,7 +116,7 @@ body {
     background: grey;
     z-index: 99;
     position: absolute;
-    right: 0;
+    right: 0px;
     border-radius: 9px 0 0 9px;
     top: 50%;
     transform: translateY(-50%);
@@ -130,7 +133,7 @@ body {
     left:0;
     display: inline-block;
     border: none;
-    width: 98%;
+    width: 100%;
 }
 
 .slider li:hover img {
@@ -227,6 +230,35 @@ span.title {
 span.txtDate {
     font-size: 11px;
     color: #9d9d9d;
+}
+
+.jsResponsiveClass {
+  float: right;
+}
+
+/* Media Queries */
+
+
+@media screen and (min-width: 600px) and (max-width: 1000px) {
+  .slider ul li {
+    min-width: 50%;
+  }
+
+  .jsResponsiveClass {
+    float: none;
+  }
+
+}
+
+@media screen and (min-width: 300px) and (max-width: 599px) {
+  .slider ul li {
+    min-width: 100%;
+  }
+
+  .jsResponsiveClass {
+    float: left;
+  }
+
 }
 
 

@@ -32,6 +32,8 @@ $(document).ready(function() {
       });
     });
 
+
+
 /* Date format function */
 
 Date.prototype.customFormat = function(formatString){
@@ -57,7 +59,9 @@ Date.prototype.customFormat = function(formatString){
 }
 
 
-  /* Aritcles and CTV API use */
+
+
+/* Aritcles and CTV API use */
 
   var ctvAPI = "https://www.ctv.ca/api/curatedfilter/byfilter/3c4d81e6-45f1-4b90-8728-2c93583d6b36/1/8";
   $.getJSON( ctvAPI, {
@@ -80,32 +84,55 @@ Date.prototype.customFormat = function(formatString){
     });
 
 
-  /* Slider */
+  /* Responsify using class in CSS media query for the breakpoints */
 
-  $(document).ready(function() {
+    function checkSize(){
+        // @media screen and (min-width: 600px) and (max-width: 1000px)
+        if ($(".jsResponsiveClass").css("float") == "none" ){
+            slideSlider = 50;
+        }
+        // @media screen and (min-width: 300px) and (max-width: 599px)
+        else if ($(".jsResponsiveClass").css("float") == "left" )  {
+            slideSlider = 100;
+
+
+        // @media screen and (min-width: 1001px)
+        } else {
+            slideSlider = 25;
+        }
+    }
+        // run test on initial page load
+        checkSize();
+         // run test on resize of the window
+        $(window).resize(checkSize);
+
+    /* Slider */
     var move = 0;
+    var multiplyer = 7 /* total images */  - (100/slideSlider);
+    var slideSliderMax = slideSlider * multiplyer;
 
     $("#next-arrow-on").click(function () {
-      console.log(move);
-      if (move > -900) {
-        move -= 300;
+      console.log(slideSlider + " " + slideSliderMax);
+      if (move >= 0 && move < slideSliderMax ) {
+        move += slideSlider;
         $( "#previous-arrow-off").css("z-index", 99);
-        $(".slider ul").css("margin-left", move + "px");
+        $(".slider ul").css("margin-left", -move + "%");
       } else {
         $("#next-arrow-off").css("z-index", 101);
       }
     });
 
     $("#previous-arrow-on").click(function () {
-            console.log(move);
-      if (move < 0) {
-        move += 300;
+      if (move > 0) {
+        move -= slideSlider;
         $("#next-arrow-off").css("z-index", 99);
-        $(".slider ul").css("margin-left", move + "px");
+        $(".slider ul").css("margin-left", -move + "%");
       } else {
         $( "#previous-arrow-off").css("z-index", 101);
       }
     });
-  })
+
+
+
 });
 
