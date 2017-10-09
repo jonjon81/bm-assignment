@@ -1,6 +1,9 @@
 $(document).ready(function() {
 
-/* Thumbnail slider and 9Cmedia API use */
+/* -----------------------
+ Thumbnail slider and
+ 9Cmedia API use
+________________________*/
 
   var mediaAPI = "https://capi.9c9media.com/destinations/ctv_web/platforms/desktop/collections/88/contents?$include=%5bEpisode,Media.Id,Season,ItemsType,Items.ID,Images,Type,ShortDesc,Media.Name,Season,Episode,Genres%5d&$inlinecount=true&$page=1&$top=7&type=episode";
   $.getJSON( mediaAPI, {
@@ -34,7 +37,33 @@ $(document).ready(function() {
     });
 
 
-/* Date format function */
+/* -----------------------
+Aritcles and CTV API use
+________________________*/
+
+  var ctvAPI = "https://www.ctv.ca/api/curatedfilter/byfilter/3c4d81e6-45f1-4b90-8728-2c93583d6b36/1/8";
+  $.getJSON( ctvAPI, {
+    format: "json"
+  })
+    .done(function( data ) {
+      $.each( data.Items, function( i, element ) {
+        var picture = "<img src='" + element.ThumbnailUrl + "'>";
+        var title = element.Description;
+        var date = element.PublishFromDate;
+
+        var msec = Date.parse(date);
+        var d = new Date(msec);
+        var date = d.customFormat( "#MMMM# #DD#, #YYYY#")
+
+        var url = element.Url;
+        $(".articles ul").append("<li class='col-md-4 col-sm-6 col-xs-12'><a target='_blank' href='" + url + "'</a>" + picture + "<span class='articleText'>" + "<span class='title'>" + title + "</span>" + "</br>" + "<span class='txtDate'>" + date + "</span>" + "</br>" + " "  + "</span></li>" );
+      });
+    });
+
+
+/* -----------------------
+ Date format function
+________________________*/
 
 Date.prototype.customFormat = function(formatString){
   var YYYY,YY,MMMM,MMM,MM,M,DDDD,DDD,DD,D,hhhh,hhh,hh,h,mm,m,ss,s,ampm,AMPM,dMod,th;
@@ -59,39 +88,19 @@ Date.prototype.customFormat = function(formatString){
 }
 
 
-/* Aritcles and CTV API use */
+/* ------------
+ Slider
+________________*/
 
-  var ctvAPI = "https://www.ctv.ca/api/curatedfilter/byfilter/3c4d81e6-45f1-4b90-8728-2c93583d6b36/1/8";
-  $.getJSON( ctvAPI, {
-    format: "json"
-  })
-    .done(function( data ) {
-      $.each( data.Items, function( i, element ) {
-        var picture = "<img src='" + element.ThumbnailUrl + "'>";
-        var title = element.Description;
-        var date = element.PublishFromDate;
-
-        var msec = Date.parse(date);
-        var d = new Date(msec);
-        var date = d.customFormat( "#MMMM# #DD#, #YYYY#")
-
-        var url = element.Url;
-        $(".articles ul").append("<li class='col-md-4 col-sm-6 col-xs-12'><a target='_blank' href='" + url + "'</a>" + picture + "<span class='articleText'>" + "<span class='title'>" + title + "</span>" + "</br>" + "<span class='txtDate'>" + date + "</span>" + "</br>" + " "  + "</span></li>" );
-      });
-    });
-
-
-
-  /* Responsify using class in CSS media query for the breakpoints */
+/* Responsiveness using class in CSS media query for the breakpoints */
     function checkSize(){
-        // @media screen and (min-width: 600px) and (max-width: 1000px)
-
-        if ($(".jsResponsiveClass").css("float") == "none" ){
-            slideSlider = 50.5;
-        }
-        // @media screen and (min-width: 300px) and (max-width: 599px)
-        else if ($(".jsResponsiveClass").css("float") == "left" )  {
+        // @media screen and (min-width: 200px) and (max-width: 599px)
+        if ($(".jsResponsiveClass").css("float") == "left" ){
             slideSlider = 100.5;
+        }
+        // @media screen and (min-width: 600px) and (max-width: 1000px)
+        else if ($(".jsResponsiveClass").css("float") == "none" )  {
+            slideSlider = 50.5;
         // @media screen and (min-width: 1001px)
         } else {
             slideSlider = 25.5;
@@ -100,9 +109,6 @@ Date.prototype.customFormat = function(formatString){
         // run test on initial page load
         checkSize();
 
-
-
-  /* Slider */
     var totalSlides = 7;
     var move = 0;
     var multiplyer = totalSlides - (100/(slideSlider - 0.5));
@@ -112,28 +118,22 @@ Date.prototype.customFormat = function(formatString){
     $("#next-arrow-on").click(function () {
       if (move >= 0 && move < (slideSliderMax - slideSlider)) {
         move += slideSlider;
-        console.log(move);
         $( "#previous-arrow-off").css("z-index", 99);
-        $(".slider ul").css("margin-left", -move + "%");
       } else {
-        console.log("Done " + move);
         move += slideSlider;
         $("#next-arrow-off").css("z-index", 101);
-        $(".slider ul").css("margin-left", -move + "%");
       }
+      $(".slider ul").css("margin-left", -move + "%");
     });
 
     $("#previous-arrow-on").click(function () {
       if (move > slideSlider && move <= (slideSliderMax)) {
         move -= slideSlider;
         $("#next-arrow-off").css("z-index", 99);
-        $(".slider ul").css("margin-left", -move + "%");
       } else {
-        console.log("Done " + move);
         move -= slideSlider;
         $( "#previous-arrow-off").css("z-index", 101);
-        $(".slider ul").css("margin-left", -move + "%");
       }
+      $(".slider ul").css("margin-left", -move + "%");
     });
 });
-

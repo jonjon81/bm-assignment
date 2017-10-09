@@ -1,0 +1,235 @@
+/* -----------------------
+ Default
+________________________*/
+
+html {
+  box-sizing: border-box;
+}
+
+* {
+  box-sizing: inherit;
+  &:before, &:after {
+    box-sizing: inherit;
+  }
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+.container {
+  min-height: 100vh;
+  overflow: hidden;
+  max-width: 1170px;
+}
+
+body {
+  padding-top: 50px;
+  padding-bottom: 50px;
+}
+
+
+/* -----------------------
+ Slider
+________________________*/
+
+.slider {
+  position: relative;
+  ul {
+    position: relative;
+    padding: 0;
+    margin-top: 25px;
+    -moz-transition: margin 1s;
+    -ms-transition: margin 1s;
+    -webkit-transition: margin 1s;
+    -o-transition: margin 1s;
+    transition: margin 1s;
+    white-space: nowrap;
+    width: 100%;
+    list-style: none;
+    -ms-box-orient: horizontal;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -moz-flex;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-flex-wrap: nowrap;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    li {
+      position: relative;
+      min-width: 25%;
+      overflow: hidden;
+      margin-right: 0.5%;
+    }
+  }
+  .arrow:hover {
+    background: blue !important;
+    -webkit-transition: background .3s;
+    -o-transition: background .3s;
+    transition: background .3s;
+    cursor: pointer;
+  }
+  #previous-arrow-on, #previous-arrow-off {
+    padding: 11px;
+    color: #fff;
+    font-size: 18px;
+    background: #f3c001 !important;
+    z-index: 100;
+    position: absolute;
+    left: 0;
+    border-radius: 0 9px 9px 0;
+    top: 50%;
+    transform: translateY(-50%);
+    &:hover {
+      background: blue !important;
+    }
+  }
+  #previous-arrow-off {
+    background: grey!important;
+    z-index: 101;
+    cursor: auto !important;
+    &:hover {
+      background: grey !important;
+    }
+  }
+  #next-arrow-on, #next-arrow-off {
+    padding: 11px;
+    color: #fff;
+    font-size: 18px;
+    background: #f3c001;
+    z-index: 100;
+    position: absolute;
+    right: 0;
+    border-radius: 9px 0 0 9px;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+  #next-arrow-off {
+    background: grey;
+    z-index: 99;
+    cursor: auto !important;
+    &:hover {
+      background: grey !important;
+    }
+  }
+  li {
+    img {
+      max-width: 100%;
+      display: inline-block;
+    }
+    &:hover img {
+      -moz-transform: scale(1.2);
+      -webkit-transform: scale(1.2);
+      transform: scale(1.2);
+      -webkit-transition: all 0.5s ease;
+      transition: all 0.5s ease;
+    }
+    &::before {
+      content: url(play-button.svg);
+      width: 50px;
+      height: 50px;
+      position: absolute;
+      left: 10px;
+      top: 10px;
+    }
+  }
+  li span {
+    &.title {
+      position: absolute;
+      z-index: 10;
+      width: 100%;
+      bottom: 0;
+      left: 0;
+      color: #fff;
+      padding: 10px;
+      background: rgba(0, 0, 0, 0.5);
+    }
+    &.season {
+      position: absolute;
+      z-index: 10;
+      width: 100%;
+      bottom: 0;
+      left: 0;
+      color: #fff;
+      padding: 10px;
+    }
+  }
+}
+
+
+/* -----------------------
+ Article
+________________________*/
+
+.articles {
+  ul {
+    margin-top: 40px;
+    display: flex;
+    flex-wrap: wrap;
+    padding: 0;
+  }
+  li {
+    display: flex;
+    flex-direction: column;
+    vertical-align: top;
+    margin-top: 30px;
+    &:hover .title {
+      border-bottom: 2px solid #000;
+    }
+    img {
+      height: inherit;
+      width: 100%;
+    }
+  }
+}
+
+span {
+  &.articleText {
+    display: block;
+    color: #000;
+    margin-top: 20px;
+  }
+  &.title {
+    font-weight: bold;
+    font-size: 16px;
+  }
+  &.txtDate {
+    font-size: 11px;
+    color: #9d9d9d;
+  }
+}
+
+.jsResponsiveClass {
+  float: right;
+}
+
+
+/* -----------------------
+ Media Queries
+________________________*/
+
+@media screen and (min-width: 600px) and (max-width: 1000px) {
+  .slider ul li {
+    min-width: 50%;
+  }
+  .jsResponsiveClass {
+    float: none;
+  }
+  .slider .arrow {
+    padding: 18px !important;
+  }
+}
+
+@media screen and (min-width: 300px) and (max-width: 599px) {
+  .slider ul li {
+    min-width: 100%;
+  }
+  .jsResponsiveClass {
+    float: left;
+  }
+  .slider .arrow {
+    padding: 20px !important;
+  }
+}
