@@ -50,7 +50,7 @@ body {
   position: relative;
   min-width: 25%;
   overflow: hidden;
-  padding: 2px;
+  margin-right: 0.5%;
 }
 
 .slider .arrow:hover {
@@ -103,7 +103,7 @@ body {
     background: #f3c001;
     z-index: 100;
     position: absolute;
-    right: 0px;
+    right: 0;
     border-radius: 9px 0 0 9px;
     top: 50%;
     transform: translateY(-50%);
@@ -116,7 +116,7 @@ body {
     background: grey;
     z-index: 99;
     position: absolute;
-    right: 0px;
+    right: 0;
     border-radius: 9px 0 0 9px;
     top: 50%;
     transform: translateY(-50%);
@@ -130,10 +130,7 @@ body {
 
 .slider li img {
     max-width:100%;
-    left:0;
     display: inline-block;
-    border: none;
-    width: 100%;
 }
 
 .slider li:hover img {
@@ -205,7 +202,7 @@ body {
     display: flex;
     flex-direction: column;
     vertical-align: top;
-    margin-top: 20px;
+    margin-top: 30px;
 }
 
 .articles li:hover .title {
@@ -260,6 +257,4 @@ span.txtDate {
   }
 
 }
-
-
 

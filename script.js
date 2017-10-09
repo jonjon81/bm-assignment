@@ -8,6 +8,7 @@ $(document).ready(function() {
   })
 
     .done(function( data ) {
+
       $.each( data.Items, function( i, element ) {
 
         var picture = "<img src='" + element.Images[0].Url + "'>";
@@ -27,11 +28,10 @@ $(document).ready(function() {
           beforeEpisode = "E";
         }
 
-        $(".slider ul").append("<li>" + picture + "<span class='title'>" + title + "</br>" + beforeSeason + season + " " + beforeEpisode + episode + "</span></li>" );
+        $(".slider ul").append("<li class='slide'>" + picture + "<span class='title'>" + title + "</br>" + beforeSeason + season + " " + beforeEpisode + episode + "</span></li>" );
 
       });
     });
-
 
 
 /* Date format function */
@@ -59,15 +59,12 @@ Date.prototype.customFormat = function(formatString){
 }
 
 
-
-
 /* Aritcles and CTV API use */
 
   var ctvAPI = "https://www.ctv.ca/api/curatedfilter/byfilter/3c4d81e6-45f1-4b90-8728-2c93583d6b36/1/8";
   $.getJSON( ctvAPI, {
     format: "json"
   })
-
     .done(function( data ) {
       $.each( data.Items, function( i, element ) {
         var picture = "<img src='" + element.ThumbnailUrl + "'>";
@@ -84,55 +81,59 @@ Date.prototype.customFormat = function(formatString){
     });
 
 
-  /* Responsify using class in CSS media query for the breakpoints */
 
+  /* Responsify using class in CSS media query for the breakpoints */
     function checkSize(){
         // @media screen and (min-width: 600px) and (max-width: 1000px)
+
         if ($(".jsResponsiveClass").css("float") == "none" ){
-            slideSlider = 50;
+            slideSlider = 50.5;
         }
         // @media screen and (min-width: 300px) and (max-width: 599px)
         else if ($(".jsResponsiveClass").css("float") == "left" )  {
-            slideSlider = 100;
-
-
+            slideSlider = 100.5;
         // @media screen and (min-width: 1001px)
         } else {
-            slideSlider = 25;
+            slideSlider = 25.5;
         }
     }
         // run test on initial page load
         checkSize();
-         // run test on resize of the window
-        $(window).resize(checkSize);
 
-    /* Slider */
+
+
+  /* Slider */
+    var totalSlides = 7;
     var move = 0;
-    var multiplyer = 7 /* total images */  - (100/slideSlider);
+    var multiplyer = totalSlides - (100/(slideSlider - 0.5));
+    /* allows the slider to slide one image at a time */
     var slideSliderMax = slideSlider * multiplyer;
 
     $("#next-arrow-on").click(function () {
-      console.log(slideSlider + " " + slideSliderMax);
-      if (move >= 0 && move < slideSliderMax ) {
+      if (move >= 0 && move < (slideSliderMax - slideSlider)) {
         move += slideSlider;
+        console.log(move);
         $( "#previous-arrow-off").css("z-index", 99);
         $(".slider ul").css("margin-left", -move + "%");
       } else {
+        console.log("Done " + move);
+        move += slideSlider;
         $("#next-arrow-off").css("z-index", 101);
+        $(".slider ul").css("margin-left", -move + "%");
       }
     });
 
     $("#previous-arrow-on").click(function () {
-      if (move > 0) {
+      if (move > slideSlider && move <= (slideSliderMax)) {
         move -= slideSlider;
         $("#next-arrow-off").css("z-index", 99);
         $(".slider ul").css("margin-left", -move + "%");
       } else {
+        console.log("Done " + move);
+        move -= slideSlider;
         $( "#previous-arrow-off").css("z-index", 101);
+        $(".slider ul").css("margin-left", -move + "%");
       }
     });
-
-
-
 });
 
